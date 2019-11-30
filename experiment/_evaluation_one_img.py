@@ -24,10 +24,10 @@ nlgeval = NLGEval()  # loads the evaluator
 
 def make_prediction(image_features, caps, caplens, attributes, allcaps, checkpoint):
     checkpoint = torch.load(os.path.join(params.ckpt_folder, checkpoint), map_location = params.device)
-    decoder = checkpoint['decoder']
+    vs_att_decoder = checkpoint['decoder']
     
-    decoder = decoder.to(params.device)
-    decoder.eval()
+    vs_att_decoder = vs_att_decoder.to(params.device)
+    vs_att_decoder.eval()
 
     references = list()
     hypotheses = list()
@@ -60,35 +60,35 @@ def make_prediction(image_features, caps, caplens, attributes, allcaps, checkpoi
     # Start decoding
     step = 1
 
-    h1_v, c1_v = decoder.init_hidden_state(k)  # (batch_size, decoder_dim)
-    h1_s, c1_s = decoder.init_hidden_state(k)  # (batch_size, decoder_dim)
-    h2, c2 = decoder.init_hidden_state(k)  # (batch_size, decoder_dim)
+    h1_v, c1_v = vs_att_decoder.init_hidden_state(k)  # (batch_size, decoder_dim)
+    h1_s, c1_s = vs_att_decoder.init_hidden_state(k)  # (batch_size, decoder_dim)
+    h2, c2 = vs_att_decoder.init_hidden_state(k)  # (batch_size, decoder_dim)
 
-    attr_embedding = decoder.attr_embedding(attributes)
+    attr_embedding = vs_att_decoder.attr_embedding(attributes)
     attr_embedding_mean = attr_embedding.mean(1)
     attr_embedding_mean = attr_embedding_mean.expand(k, params.attr_emb_dim)
 
     # s is a number less than or equal to k, because sequences are removed from this process once they hit <end>
     while True:
 
-        cap_embeddings = decoder.cap_embedding(k_prev_words).squeeze(1)  # (s, embed_dim)
-        h1_v, c1_v = decoder.top_down_visual_attention(
+        cap_embeddings = vs_att_decoder.cap_embedding(k_prev_words).squeeze(1)  # (s, embed_dim)
+        h1_v, c1_v = vs_att_decoder.top_down_visual_attention(
             torch.cat([h2, image_features_mean, cap_embeddings], dim=1),
             (h1_v, c1_v))  # (batch_size_t, decoder_dim)
 
-        visual_attention_weighted_encoding = decoder.visual_attention(image_features, h1_v)
+        visual_attention_weighted_encoding = vs_att_decoder.visual_attention(image_features, h1_v)
 
-        h1_s, c1_s = decoder.top_down_sematic_attention(
+        h1_s, c1_s = vs_att_decoder.top_down_sematic_attention(
             torch.cat([h2, attr_embedding_mean, cap_embeddings], dim=1), 
             (h1_s, c1_s))
 
-        semantic_attention_weighted_encoding = decoder.semantic_attention(attr_embedding_mean, h1_s)
+        semantic_attention_weighted_encoding = vs_att_decoder.semantic_attention(attr_embedding_mean, h1_s)
 
 
-        h2, c2 = decoder.language_model(
+        h2, c2 = vs_att_decoder.language_model(
             torch.cat([visual_attention_weighted_encoding, h1_v, semantic_attention_weighted_encoding, h1_s], dim=1), (h2, c2))
 
-        scores = decoder.fc(h2)  # (s, vocab_size)
+        scores = vs_att_decoder.fc(h2)  # (s, vocab_size)
         scores = F.log_softmax(scores, dim=1)
 
         # Add

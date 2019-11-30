@@ -28,4 +28,4 @@ log_interval = 100
 
 # Evaluation parameters 
 beam_size = 5
-checkpoint = 'BEST_checkpoint_4_preprocessed_coco.pth.tar'
+checkpoint = 'BEST_checkpoint_6_preprocessed_coco.pth.tar'
