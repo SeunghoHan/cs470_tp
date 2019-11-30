@@ -21,7 +21,7 @@ Our experiment environment is Colab. So, we can use only one GPU for training an
     <td>113.5</td>
     </tr>    
   <tr>
-    <td>R<a href="https://drive.google.com/file/d/10atC8rY7PdhnKW08INO33mEXYUyQ6G0N/view?usp=sharing">Reference github implementation (36 epoch)</a></td>
+    <td><a href="https://drive.google.com/file/d/10atC8rY7PdhnKW08INO33mEXYUyQ6G0N/view?usp=sharing">Reference github implementation (36 epoch)</a></td>
     <td>35.9</td>
     <td>26.9</td>
     <td>56.2</td>
