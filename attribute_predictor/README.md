@@ -11,7 +11,7 @@ python 2.7 (to get attributes) <br>
 </ul>
 
 
-<h2> Extract word2vec feature </h2>
+<h2> 2. Extract word2vec feature </h2>
 <ul> 
 <li> Execute 2nd cell in `attribute_feature_generation.ipynb` (Load_word2vec.py)
 <li> 'features/text8_w2v_features/text8.model' and 'features/text8_w2v_features/text.model.bin' will be generated in 'attribute_predictor/features/text8_w2v_features'
@@ -28,14 +28,14 @@ python 2.7 (to get attributes) <br>
 <li> 'projections.npz' will be generated in features folder using 'features.npz' (it is also executed for traing and val features)
 </ul>
 
-<h2> Predict attributes using train and val projections.npz </h2>
+<h2> 3. Predict attributes using train and val projections.npz </h2>
 <ul> 
 <li> Use attribute_generator.ipynb 
 <li> Check 'projections.npz', 'features.npz' and 'text.model.bin'
 <li> 5 tags for each image will be generated
 </ul>
 
-<h2> Last, </h2>
+<h2> 4. Last, </h2>
 <ul> 
 <li> Move 'tags.txt' for train and val to '/data/coco_attributes' for training captioning model
 </ul>
