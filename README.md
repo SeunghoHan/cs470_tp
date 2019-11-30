@@ -83,7 +83,10 @@ This command will create the following files -
 <li>PKL files that contain training and validation image IDs mapping to index in HDF5 dataset created above.</li>
 </ul>
 
-Move these files to the folder 'preprocessed_data'.
+Move these files to the folder 'preprocessed_data'. (See 'bottom_up_features/README.md' file for more details)
+
+<br>
+Before preprocess the dataset, you shoud get attribute data. To do this, move to attribute_predictore folder and follow the README file. 
 
 <br>
 
