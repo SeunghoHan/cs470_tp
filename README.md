@@ -87,15 +87,11 @@ Move these files to the folder 'preprocessed_data'.
 
 <br>
 
-Next, type this command: 
-```bash
-python create_input_files.py
-```
-or follows the this ipynb file
+Next, follows the this ipynb file: 
 ```bash
 data_preprocessing.ipynb
 ```
-This command(or ipynb file) will create the json files for caption, caption length, attributes, bottom up image features and url for each image and will be stored in preprocessed_data folder to train and evaluate the model
+This ipynb file will create the json files for caption, caption length, attributes, bottom up image features and url for each image and will be stored in preprocessed_data folder to train and evaluate the model
 
 
 <br>
