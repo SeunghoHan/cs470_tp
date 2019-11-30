@@ -28,14 +28,14 @@ python 2.7 <br>
 <li> 'projections.npz' will be generated in features folder using 'features.npz' (it is also executed for traing and val features)
 </ul>
 
-<h3> 3. Predict attributes using train and val projections.npz </h3>
+<h3> 4. Predict attributes using train and val projections.npz </h3>
 <ul> 
 <li> Use attribute_generator.ipynb 
 <li> Check 'projections.npz', 'features.npz' and 'text.model.bin'
 <li> 5 tags for each image will be generated
 </ul>
 
-<h3> 4. Last, </h3>
+<h3> 5. Last, </h3>
 <ul> 
 <li> Move 'tags.txt' for train and val to '/data/coco_attributes' for training captioning model
 </ul>
