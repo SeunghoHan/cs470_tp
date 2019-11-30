@@ -1,7 +1,7 @@
 <h2> Attribute Predictor for Semantic Attention of Image Captioning Model</h2>
 
 <h3> Requirements </h3>
-python 2.7 (to get attributes) <br>
+python 2.7 <br>
 
 <h3> 1. Download 'text8' </h3>
 <ul>

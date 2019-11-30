@@ -1,8 +1,9 @@
 <h1> Advanced Image Captioning Using Visual-Semantic Attention</h1>
 
-This is modified version of image captioning using bottopm-up and top-down attention model (<a href=https://github.com/poojahira/image-captioning-bottom-up-top-down.git/>). We added semantic attention to existing model and test our model. 
+This is modified version of (<a target = "_blank" href="https://imagecaption.blob.core.windows.net/imagecaption/trainval_36.zip">  image captioning using bottopm-up and top-down attention model </a>). We added semantic attention to existing model. To do this, first we implemented attribute predictor based on canonical correlation analysis. In our attribute predictor, it generate 5 attributes for gevin image. Using trained attribute predictor, we created attribute data for train and validation images of MSCOCO. Then, preprocessed the attribute data and used it for training model. To utilize the attribute information in captioning model, we added top-down semantic attention LSTM similar to top-down object attention LSTM. And also added semantic attention for 5 attributes and it used in language model by concatenating with object attention layer. The quantitative results are as foloows.
 
 <h2> Results obtained </h2> 
+Our experiment environment is Colab. So, we can use only one GPU for training and evaluating of model. Therefore, the epoches of ours and baseline are small.
 
 <table class="tg">
   <tr>
@@ -20,7 +21,7 @@ This is modified version of image captioning using bottopm-up and top-down atten
     <td>113.5</td>
     </tr>    
   <tr>
-    <td>Referred github implementation (Best 34 epoch)</td>
+    <td>R<a href="https://drive.google.com/file/d/10atC8rY7PdhnKW08INO33mEXYUyQ6G0N/view?usp=sharing">Reference github implementation (36 epoch)</a></td>
     <td>35.9</td>
     <td>26.9</td>
     <td>56.2</td>
@@ -28,14 +29,14 @@ This is modified version of image captioning using bottopm-up and top-down atten
   </tr>
 
   <tr>
-    <td>Our implementation (Current 4 epoch)</td>
+    <td><a href="https://drive.google.com/file/d/10atC8rY7PdhnKW08INO33mEXYUyQ6G0N/view?usp=sharing">Our implementation (4 epoch)</a></td>
     <td>34.7</td>
     <td>25.9</td>
     <td>55.1</td>
     <td>105.3</td>
     </tr>    
   <tr>
-    <td>Referred github implementation (4 epoch)</td>
+    <td><a href="https://drive.google.com/file/d/10atC8rY7PdhnKW08INO33mEXYUyQ6G0N/view?usp=sharing">Reference github implementation (4 epoch)</a></td>
     <td>?</td>
     <td>?</td>
     <td>?</td>
@@ -50,7 +51,6 @@ torch 0.4.1<br>
 h5py 2.8<br>
 tqdm 4.26<br>
 nltk 3.3<br>
-
 
 <h2> Data preparation </h2>
 
@@ -72,7 +72,7 @@ Unzip the folder and place unzipped folder in 'bottom_up_features' folder.
 
 <br>
 
-Next type this command in a python 2 environment: 
+Next type below command in a python 2 environment: 
 ```bash
 python bottom_up_features/tsv.py
 ```
@@ -83,20 +83,24 @@ This command will create the following files -
 <li>PKL files that contain training and validation image IDs mapping to index in HDF5 dataset created above.</li>
 </ul>
 
-Move these files to the folder 'preprocessed_data'. (See 'bottom_up_features/README.md' file for more details)
+Move these files to the folder 'preprocessed_data' (See 'bottom_up_features/README.md' file for more details).
 
 <br>
-Before preprocess the dataset, you shoud get attribute data. To do this, move to attribute_predictore folder and follow the README file. 
+Next, you shoud create attribute data before preprcessing the dataset. To do this, follow the instruction of <a target = "_blank" href="https://github.com/SeunghoHan/cs470_tp/blob/master/attribute_predictor/README.md">README</a> file in the attribute_predictore folder. 
 
 <br>
+
 <br>
 
-Next, follows the this ipynb file: 
+Next, follows below ipynb file to preprocess the data: 
 ```bash
 data_preprocessing.ipynb
 ```
-This ipynb file will create the json files for caption, caption length, attributes, bottom up image features and url for each image and will be stored in preprocessed_data folder to train and evaluate the model
-
+or, type this command: 
+```bash
+python create_input_files.py (*check your path)
+```
+This ipynb file (or command) will create the json files for caption, caption length, attributes, bottom up image features and url for each image and will be stored in preprocessed_data folder to train and evaluate the model
 
 <br>
 
@@ -112,7 +116,7 @@ This will install all the files needed for evaluation.
 
 To train the bottom-up top down model from scratch, type:
 ```bash
-python mode_train.py <CHECKPOINT_PATH>  (*If you have no checkpoint, write None)
+python model_train.py <CHECKPOINT_PATH>  (*If you have no checkpoint, write None)
 ```
 or follows below file
 ```bash
@@ -123,7 +127,7 @@ model_training.ipynb (*To configure checkpoint paht, see the models/model_parame
 
 To evaluate the model on the karpathy test split, edit the eval.py file to include the model checkpoint location and then type:
 ```bash
-python eval.py
+python model_evaluation.py
 ```
 or follows below file
 ```bash
