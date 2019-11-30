@@ -112,11 +112,11 @@ This will install all the files needed for evaluation.
 
 To train the bottom-up top down model from scratch, type:
 ```bash
-python train.py
+python mode_train.py <CHECKPOINT_PATH>  (*If you have no checkpoint, write None)
 ```
 or follows below file
 ```bash
-model_training.ipynb
+model_training.ipynb (*To configure checkpoint paht, see the models/model_parameters.py)
 ```
 
 <h2> Evaluation </h2>
