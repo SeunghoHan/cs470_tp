@@ -40,7 +40,7 @@ Our experiment environment is Colab. So, we can use only one GPU for training an
     <td>34.7</td>
     <td>26.1</td>
     <td>55.3</td>
-    <td>07.3</td>
+    <td>107.3</td>
     </tr>    
 </table>
 
@@ -131,7 +131,7 @@ python model_evaluation.py
 ```
 or follows below file
 ```bash
-model_evaluation.ipynb
+model_evaluation.ipynb  <CHECKPOINT_PATH>  
 ```
 
 <h2> Make prediction for test image </h2>
