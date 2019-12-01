@@ -29,18 +29,18 @@ Our experiment environment is Colab. So, we can use only one GPU for training an
   </tr>
 
   <tr>
-    <td><a href="https://drive.google.com/file/d/10atC8rY7PdhnKW08INO33mEXYUyQ6G0N/view?usp=sharing">Our implementation (4 epoch)</a></td>
-    <td>34.7</td>
-    <td>25.9</td>
-    <td>55.1</td>
-    <td>105.3</td>
+    <td><a href="https://drive.google.com/open?id=1RXHBjQF_5Afr0Jze6w5oPMdgXrJrkiyt">Our implementation (10 epoch)</a></td>
+    <td>35.4</td>
+    <td>26.3</td>
+    <td>55.3</td>
+    <td>108.3</td>
     </tr>    
   <tr>
-    <td><a href="https://drive.google.com/file/d/10atC8rY7PdhnKW08INO33mEXYUyQ6G0N/view?usp=sharing">Reference github implementation (4 epoch)</a></td>
-    <td>?</td>
-    <td>?</td>
-    <td>?</td>
-    <td>?</td>
+    <td><a href="https://drive.google.com/open?id=1k_gPMDfRqbLvuJe9mnWkgAf2pPepk5Ks">Reference github implementation (10 epoch)</a></td>
+    <td>34.7</td>
+    <td>26.1</td>
+    <td>55.3</td>
+    <td>07.3</td>
     </tr>    
 </table>
 
