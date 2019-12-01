@@ -39,7 +39,7 @@ Our experiment environment is Colab. So, we can use only one GPU for training an
     <td><a href="https://drive.google.com/open?id=1k_gPMDfRqbLvuJe9mnWkgAf2pPepk5Ks">Reference github implementation (10 epoch)</a></td>
     <td>34.7</td>
     <td>26.1</td>
-    <td>55.3</td>
+    <td>54.3</td>
     <td>107.3</td>
     </tr>    
 </table>
